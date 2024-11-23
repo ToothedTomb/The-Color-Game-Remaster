@@ -64,6 +64,9 @@ void on_entry_activate(GtkEntry *entry, gpointer user_data) {
     if (currentColor == input) {
         score++;
     }
+    else if (score <= 0){ // Make sure it does not go to the negatives.
+        score = 0; 
+    }
     else {
         score--;
     }
@@ -114,7 +117,7 @@ int main(int argc, char *argv[]) {
     titleLabel = gtk_label_new("The Color Game Remaster:"); // The title label. :) 
     gtk_widget_set_size_request(titleLabel, 300, 50);
     gtk_box_pack_start(GTK_BOX(vbox), titleLabel, TRUE, TRUE, 5);
-    apply_css(titleLabel, "label { font-size: 56px; font-weight: bold; }"); // You can use CSS to apply styles for example changing the font size.
+    apply_css(titleLabel, "label { font-size: 56px; font-weight: bold; text-decoration: underline; }"); // You can use CSS to apply styles for example changing the font size.
     timeLabel = gtk_label_new("Time left: 90");
     gtk_box_pack_start(GTK_BOX(vbox), timeLabel, TRUE, TRUE, 5);
     apply_css(timeLabel, "label { font-size: 32px; color: #000000; }");
