@@ -16,8 +16,8 @@ GtkWidget *restartButton;
 guint timerId = 0; // Variable to store the timer ID
 
 // Colors and their names
-std::vector<std::string> colorNames = {"Red", "Blue", "Green", "Yellow", "Pink", "Orange", "Black", "Gray"};
-std::vector<std::string> colorHex = {"#FF0000", "#0000FF", "#00FF00", "#FFFF00", "#FFC0CB", "#FFA500", "#000000", "#808080"};
+std::vector<std::string> colorNames = {"Red", "Blue", "Green", "Yellow", "Pink", "Orange", "Black", "Gray", "Purple"};
+std::vector<std::string> colorHex = {"#FF0000", "#0000FF", "#00FF00", "#FFFF00", "#FFC0CB", "#FFA500", "#000000", "#808080","#A020F0"};
 
 // Function to apply CSS dynamically
 void apply_css(GtkWidget *widget, const std::string &css) {
