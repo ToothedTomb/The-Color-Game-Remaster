@@ -9,5 +9,11 @@ This is the remake to the Color Game that been recreated With C++ and GTK.
 # How to compile:
 g++ main.cpp -o main `pkg-config --cflags --libs gtkmm-3.0`
 
+# How to add the application to the application list using the install.sh script:
+**Note please dont run this command as the root user:**
+bash install.sh
+
+That is all that you need to do and now can open the application and run it within you application menu in Linux. 
+
 # Download the game:
 https://jonathan-linux.itch.io/the-color-game-remaster
