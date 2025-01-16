@@ -1,4 +1,6 @@
 #!/bin/bash
+# Will remove the application to allow for updates.
+rm ~/.local/share/applications/color-game.desktop
 
 # Variables
 APP_NAME="The Color Game Remaster"
@@ -6,7 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"  # Get the directory of this script
 EXECUTABLE_PATH="${SCRIPT_DIR}/The Color Game Remaster"  # Path to the executable in the same directory
 DESKTOP_FILE_DIR="$HOME/.local/share/applications"  # User-specific application menu
 DESKTOP_FILE_PATH="$DESKTOP_FILE_DIR/color-game.desktop"  # Full path to the .desktop file
-
+ICON_PATH="${SCRIPT_DIR}/icon.png"  # Correct path to the icon file
 # Debugging information
 echo "Script directory (SCRIPT_DIR): $SCRIPT_DIR"
 echo "Executable path (EXECUTABLE_PATH): $EXECUTABLE_PATH"
@@ -21,12 +23,18 @@ if [[ ! -f "$EXECUTABLE_PATH" ]]; then
    echo "Error: Executable not found at $EXECUTABLE_PATH. Please ensure it's in the same directory as this script."
    exit 1
 fi
-
+echo "Looking for the icon at: $ICON_PATH"
+# Check if the icon source exists
+if [[ ! -f "$ICON_PATH" ]]; then
+    echo "Error: Icon not found at $ICON_SOURCE_PATH. Please ensure it is in the same directory as this script."
+    exit 1
+fi
 # Create the .desktop file content
 DESKTOP_FILE_CONTENT="[Desktop Entry]
 Name=$APP_NAME
 Exec=\"$EXECUTABLE_PATH\"
 Type=Application
+Icon=$ICON_PATH
 Categories=Game;
 Terminal=false"
 
@@ -43,12 +51,15 @@ fi
 # Move the .desktop file to the user's applications directory
 echo "Moving the .desktop file to $DESKTOP_FILE_PATH..."
 mv "$SCRIPT_DIR/color-game.desktop" "$DESKTOP_FILE_PATH"
+mkdir -p ~/.local/share/icons
 
 # Verify that the move was successful
 if [[ ! -f "$DESKTOP_FILE_PATH" ]]; then
    echo "Error: Failed to move the .desktop file to $DESKTOP_FILE_PATH."
    exit 1
 fi
+
+# 
 
 # Set appropriate permissions for the .desktop file
 chmod 644 "$DESKTOP_FILE_PATH"
