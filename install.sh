@@ -1,6 +1,6 @@
 #!/bin/bash
 # Will remove the application to allow for updates.
-rm ~/.local/share/applications/color-game.desktop
+#rm ~/.local/share/applications/color-game.desktop
 
 # Variables
 APP_NAME="The Color Game Remaster"
